@@ -15,12 +15,42 @@ STM32CubeMX projects
 * [OpenOCD](https://openocd.org/pages/getting-openocd.html)
   > 需先安装Homebrew,使用[科大源](https://mirrors.ustc.edu.cn/help/brew.git.html)安装Homebrew
 
-  >安装OpenOCD
+  > 安装OpenOCD
   > 
-  >```brew install openocd```
+  > ```brew install openocd```
 
 ## 配置CLion
 Setting->Embedded Development
-  >OpenOCD Location : /opt/homebrew/bin/openocd
+  > OpenOCD Location : /opt/homebrew/bin/openocd
   > 
-  >Stm32CubeMX Location : /Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources/STM32CubeMX
+  > Stm32CubeMX Location : /Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources/STM32CubeMX
+
+## 生成点灯项目
+* 打开STM32CubeMX，选择MCU型号
+* Pinout&Configuration
+  > System Core
+  > 
+  > SYS->Debug: Seral Wire  
+  > GPIO->PC13: GPIO_Output
+
+* Project Manager
+  > Project
+  > 
+  > Project Name: Project （方便复制项目使用通用名称）   
+  > Toolchain/IDE : STM32CubeIDE ✅Generate Under Root
+* GENERATE CODE
+* 使用CLion打开生成的项目
+* Select Board Config File 
+  >stm32f103c8t6_blue_pill.cfg->Copy to Project&Use
+* 修改`.cfg`文件
+  > 添加内容`source [find interface/stlink.cfg]`到正文第一行
+* 修改`Main.c`文件
+  > 添加LED闪烁代码
+  > ```C
+  > while (1){
+  >     HAL_Delay(500);
+  >     HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+  > }
+  > ```
+* 运行项目将看到LED闪烁
+  > 运行日志如果有Error（日志是红字，注意区分Info和Error），尝试开发版Boot0跳线帽切换到1再次运行之后再切回到0
