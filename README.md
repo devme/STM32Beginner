@@ -64,6 +64,7 @@ Stm32CubeMX Location : /Applications/STMicroelectronics/STM32CubeMX.app/Contents
 * 使用CLion打开生成的项目
 
 * Select Board Config File 
+
   如果生成的代码项目完整且正确CLion会弹出Select Board Config File窗口，
   选择stm32f103c8t6_blue_pill.cfg点击Copy to Project&Use。
 
