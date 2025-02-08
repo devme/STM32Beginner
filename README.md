@@ -70,7 +70,7 @@ Stm32CubeMX Location : /Applications/STMicroelectronics/STM32CubeMX.app/Contents
 
 * 修改`.cfg`文件
 
-  添加内容`source [find interface/stlink.cfg]`到正文第一行。
+  添加内容`source [find interface/stlink.cfg]`到正文第一行，这段代码可以在Select Board Conifg File窗口的stm32f4discovery.cfg文件中找到。
 
 * 修改`Main.c`文件
 
