@@ -98,15 +98,15 @@ Setting->Embedded Development
 > .h文件如果使用`uint8_t`等数据类型，可能需要添加`#include <stdint.h>`来引入标准库文件
 
 ## 第九章串口和`printf`
-1. 串口插件
-安装串口插件`Serial Port Monitor`，链接`/dev/tty.usb....`的设备
-> 插件不能发送HEX数据包，9-3节课中发送字符代替。  
-> 串口发送@开头勾选结束符如：@ABCD  ✅Send EOL  
-> 使用`if (RxData == 0x40)`判断@符号为开始，使用`if (RxData == 0x0d)`判断EOL符号为结束
+1. 串口插件  
+  安装串口插件`Serial Port Monitor`，链接`/dev/tty.usb....`的设备
+  > 插件不能发送HEX数据包，9-3节课中发送字符代替。  
+  > 串口发送@开头勾选结束符如：@ABCD  ✅Send EOL  
+  > 使用`if (RxData == 0x40)`判断@符号为开始，使用`if (RxData == 0x0d)`判断EOL符号为结束
 
-2. printf
-在9-1节`Hardware/Serial.c`文件修改老师重写的`int fputc(int ch, FILE *f)`为 `int __io_putchar(int ch) ` 
-> 参考老师给的资料`固件库/Project/STM32F10x_StdPeriph_Examples/USART/Printf` printf示例项目
-> 添加`add_link_options(-specs=nano.specs -specs=nosys.specs)`到`CMakeLists.txt`文件
+2. printf  
+  在9-1节`Hardware/Serial.c`文件修改老师重写的`int fputc(int ch, FILE *f)`为 `int __io_putchar(int ch) ` 
+  > 参考老师给的资料`固件库/Project/STM32F10x_StdPeriph_Examples/USART/Printf` printf示例项目
+  > 添加`add_link_options(-specs=nano.specs -specs=nosys.specs)`到`CMakeLists.txt`文件
 
 
